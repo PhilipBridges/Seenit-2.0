@@ -1,0 +1,53 @@
+<div class="col-md-12 mx-auto">
+  <div class="row pt-5">
+    <div class="col-md-6">
+      <div class="card-body">
+        <form class="text-center border border-light p-5">
+          <p class="h4 mb-4">Message</p>
+
+          <div class="form-group md-form">
+            <label for="text">Text</label>
+            <textarea required minlength="4" class="mt-4" [(ngModel)]="messageData.text" name="text" type="text" class="md-textarea md-textarea-auto form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="target">To</label>
+            <input [(ngModel)]="messageData.targetName" name="targetName" type="text" class="form-control rounded-0">
+          </div>
+          <button (click)="post()" mdbBtn color="info" block="true" type="submit" class="my-4">Submit</button>
+          <small class="green-text" *ngIf="confirm">Message sent!</small>
+          <small class="red-text" *ngIf="errors">{{errors}}</small>
+        </form>
+      </div>
+    </div>
+    <!-- Message List -->
+    <div class="list-group col-md-5 pt-2">
+      <a *ngFor="let message of messages" class="list-group-item list-group-item-action flex-column align-items-start mx-auto">
+        <div class="justify-content-between">
+          <div class="messageHeader">
+            <h5 class="mb-1">{{message.author.name}}</h5> <small>{{message.createdAt | date: 'medium'}}</small>
+          </div>
+          <hr>
+        </div>
+        <p id="msgText" class="mb-1 text-wrap">{{message.text}}</p>
+        <button (click)="clickReply(message)" size="sm" mdbBtn type="button" color="primary" mdbWavesEffect>
+          <mdb-icon icon="magic" class="mr-1"></mdb-icon>Reply
+        </button>
+      </a>
+      <nav>
+        <ul class="pagination pagination-lg">
+          <li [ngClass]="prevDisabled && 'disabled'" class="page-item">
+            <a class="page-link" mdbWavesEffect aria-label="Previous" (click)="prevPage()">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a [ngClass]="nextDisabled && 'disabled'" class="page-link" mdbWavesEffect aria-label="Next" (click)="nextPage()">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>

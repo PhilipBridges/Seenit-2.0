@@ -1,0 +1,17 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": [0, 2],
+    "linebreak-style": [0, "unix"],
+    "quotes": [0, "double"],
+    "semi": [0, "always"]
+  }
+}

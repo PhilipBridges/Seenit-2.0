@@ -1,0 +1,31 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "64cfad05d0c0f546ccf78386ff30e73721df5ebd2b0c9a8114b57e9bd95ddac6a42bec269fe4eab6f95ba46fb8fc2bbadff6d33805de89ea180c9f74f7dbb0f75ddd77868524eef098da17f373d17813a3b26cb0ced07f04c503eed3b4f927f40d2e0894d547b40845ade8d271fe5191b4239a1216d3cd3ce40415f8668ec659885211541fc8ebc7b55e884d7c756ccf7da34d0f05a1b571f9129d3ed2756f3d35cc15fd79567de03f564014ac7065c2f68d73296c56b5463e8e17ac08bc363c8acedd8c1902a587f2f26c1568a0c30de1c85e9396248622c35f499286e3050f118f0fa7d1385b73bedfd8f94245a03e8dc0bea3091aa4f52f7423200aa911cb",
+    "strategies": ["jwt", "local"],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+  "mongodb": "mongodb://admin:skele1@ds121163.mlab.com:21163/seenit"
+}
