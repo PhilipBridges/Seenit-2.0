@@ -18,6 +18,8 @@ const authentication = require("./authentication");
 const mongoose = require("./mongoose");
 const customConfig = require("../config/production");
 
+const mongodb = require('./mongodb');
+
 const app = express(feathers());
 
 if (process.env.NODE_ENV === "production") {
@@ -43,6 +45,8 @@ app.use("/", express.static(app.get("public")));
 app.configure(express.rest());
 
 app.configure(mongoose);
+
+app.configure(mongodb);
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);

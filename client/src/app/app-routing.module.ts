@@ -2,10 +2,12 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
-import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from "./auth.guard";
 import { MessagesComponent } from "./messages/messages.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { PostlistComponent } from "./postlist/postlist.component";
+import { PostViewComponent } from "./post-view/post-view.component";
+import { SeenListComponent } from "./seen-list/seen-list.component";
 
 const routes: Routes = [
   {
@@ -18,8 +20,11 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: HomeComponent,
-    canActivate: [AuthGuard]
+    component: PostlistComponent,
+  },
+  {
+    path: "posts/:id",
+    component: PostViewComponent
   },
   {
     path: "inbox",
@@ -30,6 +35,10 @@ const routes: Routes = [
     path: "",
     redirectTo: "/home",
     pathMatch: "full"
+  },
+  {
+    path: "seens",
+    component: SeenListComponent
   },
   {
     path: '**',

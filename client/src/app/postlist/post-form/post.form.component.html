@@ -1,0 +1,36 @@
+<button type="button" mdbBtn color="primary" rounded="true"
+  data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
+  <mdb-icon icon="magic" class="white-text pr-1" aria-hidden="true"></mdb-icon> New Post
+</button>
+<form>
+  <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">New post</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fa fa-user prefix grey-text"></i>
+            <input [validateSuccess]="false" data-error="required" type="text" id="orangeForm-title" class="form-control validate" [formControl]="postData.postTitle"
+              mdbInputDirective>
+            <label for="orangeForm-title">Title</label>
+          </div>
+          <div class="md-form mb-5">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <textarea [validateSuccess]="false" data-error="required" type="email" id="orangeForm-text" class="form-control validate"
+              [formControl]="postData.postText" mdbInputDirective></textarea>
+            <label for="orangeForm-text">Text</label>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button (click)="post()" mdbBtn color="deep-orange" class="waves-light" mdbWavesEffect>Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

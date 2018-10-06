@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
 
 import { AppComponent } from "./app.component";
@@ -11,9 +11,14 @@ import { RegisterComponent } from "./register/register.component";
 import { AuthService } from "./auth.service";
 import { InterceptorService } from "./interceptor.service";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { HomeComponent } from "./home/home.component";
 import { MessagesComponent } from "./messages/messages.component";
-import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { PostlistComponent } from "./postlist/postlist.component";
+import { PostFormComponent } from "./postlist/post-form/post.form.component";
+import { PostViewComponent } from './post-view/post-view.component';
+import { CommentlistComponent } from './commentlist/commentlist.component';
+import { SeenListComponent } from './seen-list/seen-list.component';
+import { SeenFormComponent } from './seen-list/seen-form/seen-form.component';
 
 @NgModule({
   declarations: [
@@ -21,16 +26,22 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    HomeComponent,
     MessagesComponent,
     NotFoundComponent,
+    PostlistComponent,
+    PostFormComponent,
+    PostViewComponent,
+    CommentlistComponent,
+    SeenListComponent,
+    SeenFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     AuthService,

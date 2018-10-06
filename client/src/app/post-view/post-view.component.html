@@ -1,0 +1,10 @@
+<div class="col-md-10 mx-auto">
+  <mdb-card>
+    <mdb-card-body *ngIf="post.author.name">
+      <mdb-card-title>{{post.title}} by {{post.author.name}} @ {{post.createdAt | date: 'medium'}}</mdb-card-title>
+      <hr>
+      <mdb-card-text>{{post.text}}</mdb-card-text>
+    </mdb-card-body>
+  </mdb-card>
+  <app-commentlist></app-commentlist>
+</div>

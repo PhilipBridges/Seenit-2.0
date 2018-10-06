@@ -2,7 +2,10 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" routerLink="/home">Navbar</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" routerLink="/home">
+      <mdb-icon icon="tv" class="white-text" aria-hidden="true"></mdb-icon>
+      Seenit
+    </a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -10,12 +13,15 @@
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
       <li routerLinkActive="active" class="nav-item">
-        <a routerLink="/home" class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+        <a routerLink="/home" class="nav-link waves-light" mdbWavesEffect>Home</a>
+      </li>
+      <li routerLinkActive="active" class="nav-item">
+        <a routerLink="/seens" class="nav-link waves-light" mdbWavesEffect>Seens</a>
       </li>
 
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light pl-4" mdbWavesEffect>
           Menu<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
@@ -34,7 +40,8 @@
         <a routerLink="login" class="nav-link waves-light" mdbWavesEffect>Login</a>
       </li>
       <li routerLink="inbox" *ngIf="authed" routerLinkActive="active" class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect>{{user.name}}</a>
+        <a class="nav-link waves-light pr-3" mdbWavesEffect>{{user.name}}
+          <mdb-icon icon="envelope" class="white-text" aria-hidden="true"></mdb-icon></a>
       </li>
       <li *ngIf="authed" routerLinkActive="active" class="nav-item">
         <a (click)="logout()" class="nav-link waves-light" mdbWavesEffect>Logout</a>

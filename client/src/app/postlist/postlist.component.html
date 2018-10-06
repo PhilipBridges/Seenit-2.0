@@ -1,0 +1,46 @@
+<!-- Table  -->
+<div class="d-flex-column float-right mr-4 justify-self-center">
+  <app-post-form></app-post-form>
+  <app-seen-form></app-seen-form>
+</div>
+<table class="table col-md-9 mx-auto">
+  <!-- Table head -->
+  <thead>
+    <tr>
+      <th>
+        <mdb-icon icon="level-up" class="mr-2 teal-text" aria-hidden="true"></mdb-icon>
+      </th>
+      <th>
+        <mdb-icon icon="leaf" class="mr-2 blue-text" aria-hidden="true">Title</mdb-icon>
+      </th>
+      <th>
+        <mdb-icon icon="leaf" class="mr-2 teal-text" aria-hidden="true"></mdb-icon>Text
+      </th>
+      <th>
+        <mdb-icon icon="leaf" class="indigo-text" aria-hidden="true"></mdb-icon>Author
+      </th>
+    </tr>
+  </thead>
+  <!-- Table head -->
+
+  <!-- Table body -->
+  <tbody>
+    <tr *ngFor="let post of posts">
+      <th scope="row">{{post.upvotes}}</th>
+      <td [routerLink]="['/posts', post._id]">
+        {{post.title}}
+      </td>
+      <td *ngIf="lengthCheck(post)" [routerLink]="['/posts', post._id]">
+        {{post.text}}
+      </td>
+      <td *ngIf="!lengthCheck(post)" [routerLink]="['/posts', post._id]">
+        {{post.text|slice : 0 : 20 }}...
+      </td>
+      <td>
+        {{post.author.name}} @ {{post.createdAt | date: 'medium'}}
+      </td>
+    </tr>
+  </tbody>
+  <!-- Table body -->
+</table>
+<!-- Table  -->

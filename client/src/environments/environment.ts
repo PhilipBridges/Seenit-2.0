@@ -4,9 +4,12 @@
 
 export const environment = {
   production: false,
-  REGISTER_ENDPOINT: "localhost:3030/users",
-  LOGIN_ENDPOINT: "localhost:3030/authentication",
-  MESSAGE_ENDPOINT: "localhost:3030/messages"
+  REGISTER_ENDPOINT: "http://localhost:3030/users",
+  LOGIN_ENDPOINT: "http://localhost:3030/authentication",
+  MESSAGE_ENDPOINT: "http://localhost:3030/messages",
+  POST_ENDPOINT: "http://localhost:3030/posts",
+  COMMENT_ENDPOINT: "http://localhost:3030/comments",
+  SEEN_ENDPOINT: "http://localhost:3030/seens"
 };
 
 /*
