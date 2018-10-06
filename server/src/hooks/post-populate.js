@@ -5,7 +5,7 @@
 module.exports = function(options = {}) {
   return async context => {
     // Get `app`, `method`, `params` and `result` from the hook context
-    const { app, method, result, params } = context;
+    const { app, method, result } = context;
 
     // Make sure that we always have a list of posts either by wrapping
     // a single post into an array or by getting the `data` from the `find` method's result

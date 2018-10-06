@@ -21,10 +21,15 @@ export class PostService {
     return this.http.get<any>(`${this.postUrl}/${id}`);
   }
 
+  getSeenPosts(seenName) {
+    return this.http.get<any>(this.postUrl, { params: { seenName } });
+  }
+
   createPost(post) {
     const newPost = {
       title: post.postTitle.value,
-      text: post.postText.value
+      text: post.postText.value,
+      seenName: post.seenName
     };
     return this.http
       .post(this.postUrl, newPost)

@@ -4,7 +4,7 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = function(options = {}) {
   return async context => {
-    const { data, app, method, params } = context;
+    const { data } = context;
 
     if (!data.text) {
       throw new Error("Post must have text.");
@@ -22,7 +22,8 @@ module.exports = function(options = {}) {
     context.data = {
       title: data.title,
       author: context.params.user._id,
-      text: data.text
+      text: data.text,
+      seenName: data.seenName
     };
     return context;
   };

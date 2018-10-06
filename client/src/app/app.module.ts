@@ -19,6 +19,7 @@ import { PostViewComponent } from './post-view/post-view.component';
 import { CommentlistComponent } from './commentlist/commentlist.component';
 import { SeenListComponent } from './seen-list/seen-list.component';
 import { SeenFormComponent } from './seen-list/seen-form/seen-form.component';
+import { SeenViewComponent } from './seen-list/seen-view/seen-view.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SeenFormComponent } from './seen-list/seen-form/seen-form.component';
     PostViewComponent,
     CommentlistComponent,
     SeenListComponent,
-    SeenFormComponent
+    SeenFormComponent,
+    SeenViewComponent
   ],
   imports: [
     BrowserModule,

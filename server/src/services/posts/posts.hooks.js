@@ -6,10 +6,12 @@ const postPatch = require("../../hooks/post-patch");
 
 const postPopulate = require("../../hooks/post-populate");
 
+const seenPosts = require('../../hooks/seen-posts');
+
 module.exports = {
   before: {
     all: [authenticate("jwt")],
-    find: [],
+    find: [seenPosts()],
     get: [],
     create: [postHook()],
     update: [],

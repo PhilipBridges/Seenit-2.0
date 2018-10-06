@@ -1,5 +1,6 @@
 const { authenticate } = require("@feathersjs/authentication").hooks;
 const seenHook = require("../../hooks/seen-hook");
+const seenPopulate = require('../../hooks/seen-populate');
 module.exports = {
   before: {
     all: [authenticate("jwt")],
@@ -13,8 +14,8 @@ module.exports = {
 
   after: {
     all: [],
-    find: [],
-    get: [],
+    find: [seenPopulate()],
+    get: [seenPopulate()],
     create: [],
     update: [],
     patch: [],

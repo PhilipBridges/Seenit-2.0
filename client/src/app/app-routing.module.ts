@@ -8,6 +8,7 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { PostlistComponent } from "./postlist/postlist.component";
 import { PostViewComponent } from "./post-view/post-view.component";
 import { SeenListComponent } from "./seen-list/seen-list.component";
+import { SeenViewComponent } from "./seen-list/seen-view/seen-view.component";
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: PostlistComponent,
+    component: PostlistComponent
   },
   {
     path: "posts/:id",
@@ -41,7 +42,11 @@ const routes: Routes = [
     component: SeenListComponent
   },
   {
-    path: '**',
+    path: "seens/:name",
+    component: SeenViewComponent
+  },
+  {
+    path: "**",
     component: NotFoundComponent
   }
 ];

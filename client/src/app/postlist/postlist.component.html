@@ -1,6 +1,5 @@
 <!-- Table  -->
 <div class="d-flex-column float-right mr-4 justify-self-center">
-  <app-post-form></app-post-form>
   <app-seen-form></app-seen-form>
 </div>
 <table class="table col-md-9 mx-auto">
@@ -17,7 +16,10 @@
         <mdb-icon icon="leaf" class="mr-2 teal-text" aria-hidden="true"></mdb-icon>Text
       </th>
       <th>
-        <mdb-icon icon="leaf" class="indigo-text" aria-hidden="true"></mdb-icon>Author
+        <mdb-icon icon="leaf" class="indigo-text" aria-hidden="true"></mdb-icon>Author & Date
+      </th>
+      <th>
+        <mdb-icon icon="leaf" class="indigo-text" aria-hidden="true"></mdb-icon>Seen
       </th>
     </tr>
   </thead>
@@ -38,6 +40,9 @@
       </td>
       <td>
         {{post.author.name}} @ {{post.createdAt | date: 'medium'}}
+      </td>
+      <td>
+        {{post.seenName}}
       </td>
     </tr>
   </tbody>

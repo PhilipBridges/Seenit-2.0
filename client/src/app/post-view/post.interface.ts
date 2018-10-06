@@ -3,7 +3,7 @@ export default interface PostInterface {
   text: string;
   author: object;
   upvotes: number;
-  seenId: object;
+  seenName: string;
   voters: [{}];
   createdAt: string;
 }

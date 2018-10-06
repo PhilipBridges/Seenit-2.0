@@ -1,3 +1,27 @@
-<p>
-  seen-list works!
-</p>
+<div class="col-md-10 mx-auto">
+  <div class="list-group-item flex-column align-items-start mx-auto">
+    <div *ngFor="let seen of seens" id="seenLink" class="justify-content-between list-group-item-action" [routerLink]="['/seens', seen.name]">
+      <div class="messageHeader">
+        <h5 class="mb-1">{{seen.name}}</h5> <small>Created by {{seen.owner.name}} on {{seen.createdAt | date}}</small>
+      </div>
+      <p id="msgText" class="mb-1 text-wrap">Description: {{seen.description}}</p>
+      <hr>
+    </div>
+  </div>
+  <nav>
+    <ul class="pagination pagination-lg">
+      <li [ngClass]="prevDisabled && 'disabled'" class="page-item">
+        <a class="page-link" mdbWavesEffect aria-label="Previous" (click)="prevPage()">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a [ngClass]="nextDisabled && 'disabled'" class="page-link" mdbWavesEffect aria-label="Next" (click)="nextPage()">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -10,7 +10,7 @@ module.exports = function(app) {
       title: { type: String, required: true },
       text: { type: String, required: true },
       author: { type: Schema.Types.ObjectId, ref: "User", required: true },
-      seenId: { type: Schema.Types.ObjectId, ref: "seen", required: true },
+      seenName: { type: String, required: true },
       upvotes: { type: Number, required: true, default: 0 },
       voters: [{ type: Schema.Types.ObjectId, ref: "User" }]
     },

@@ -29,6 +29,18 @@ export class SeenService {
       .pipe(catchError(this.errorHandler));
   }
 
+  getNextPage(skip) {
+    return this.http.get<any>(this.seenUrl, {
+      params: { skip }
+    });
+  }
+
+  getPrevPage(skip) {
+    return this.http.get<any>(this.seenUrl, {
+      params: { skip }
+    });
+  }
+
   errorHandler(error: HttpErrorResponse) {
     return throwError(error);
   }

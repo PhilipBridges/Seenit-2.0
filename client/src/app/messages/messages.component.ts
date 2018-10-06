@@ -29,8 +29,8 @@ export class MessagesComponent implements OnInit {
     this.messageService.getMessages().subscribe(messages => {
       this.messages.push(...messages.data);
       this.total = messages.total;
-      this.prevCheck();
       this.nextCheck();
+      this.prevDisabled = true;
     });
   }
 
