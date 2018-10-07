@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "../../post.service";
 import { FormControl, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-post-form",
@@ -16,7 +16,8 @@ export class PostFormComponent implements OnInit {
   };
   constructor(
     private postService: PostService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -24,8 +25,8 @@ export class PostFormComponent implements OnInit {
   }
 
   post() {
-    this.postService
-      .createPost(this.postData)
-      .subscribe(res => console.log(res));
+    this.postService.createPost(this.postData).subscribe(res => {
+      this.router.navigate(["/posts", res._id]);
+    });
   }
 }

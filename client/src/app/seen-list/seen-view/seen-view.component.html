@@ -25,7 +25,12 @@
   <!-- Table body -->
   <tbody>
     <tr *ngFor="let post of posts">
-      <th scope="row">{{post.upvotes}}</th>
+      <th scope="row" id="voteArrow" (click)="upvote(post._id, post.author)" [ngClass]="{'text-red': voted}">
+        <span>
+          <mdb-icon icon="sort-up" class="indigo-text d-block" aria-hidden="true">
+          </mdb-icon>
+        </span>{{post.upvotes}}
+      </th>
       <td [routerLink]="['/posts', post._id]">
         {{post.title}}
       </td>
@@ -39,7 +44,7 @@
         {{post.author.name}} @ {{post.createdAt | date: 'medium'}}
       </td>
     </tr>
-    
+
   </tbody>
   <!-- Table body -->
 </table>

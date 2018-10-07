@@ -7,7 +7,6 @@ import { environment } from "./../environments/environment";
   providedIn: "root"
 })
 export class AuthService {
-  // registerUrl = environment.REGISTER_ENDPOINT;
   registerUrl = environment.REGISTER_ENDPOINT;
   loginUrl = environment.LOGIN_ENDPOINT;
 

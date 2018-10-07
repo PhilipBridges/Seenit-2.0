@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "./../environments/environment";
-import { Subject, throwError } from "rxjs";
+import { Subject, throwError, BehaviorSubject } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 @Injectable({
@@ -10,6 +10,9 @@ import { catchError } from "rxjs/operators";
 export class PostService {
   private posts = new Subject<any>();
   postUrl = environment.POST_ENDPOINT;
+  votedPost = new BehaviorSubject<{}>({});
+
+  postCast = this.votedPost.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -34,6 +37,20 @@ export class PostService {
     return this.http
       .post(this.postUrl, newPost)
       .pipe(catchError(this.errorHandler));
+  }
+
+  upvote(id, author) {
+    console.log("PASSED AUTHOR", author);
+    return this.http.patch<any>(`${this.postUrl}/${id}`, {
+      vote: true,
+      author: {
+        ...author
+      }
+    });
+  }
+
+  upvotedPost(id) {
+    this.votedPost.next(id);
   }
 
   getNextPage(skip) {

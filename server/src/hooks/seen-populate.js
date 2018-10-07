@@ -8,6 +8,13 @@ module.exports = function(options = {}) {
 
     const seens = method === "find" ? result.data : [result];
 
+    if (params.query.seenName) {
+      params.query = {
+        seenName: params.query.seenName,
+        $sort: { upvotes: "-1" }
+      };
+    }
+
     await Promise.all(
       seens.map(async seen => {
         seen.owner = await app.service("users").get(seen.owner, params);

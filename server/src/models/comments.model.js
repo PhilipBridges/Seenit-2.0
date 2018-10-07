@@ -9,7 +9,8 @@ module.exports = function(app) {
     {
       text: { type: String, required: true },
       author: { type: Schema.Types.ObjectId, required: true },
-      upvotes: { type: Number, required: true, default: 0 }
+      upvotes: { type: Number, required: true, default: 0 },
+      postId: { type: Schema.Types.ObjectId, ref: "posts", required: true }
     },
     {
       timestamps: true

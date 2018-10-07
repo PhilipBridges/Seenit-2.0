@@ -24,6 +24,12 @@ export class PostlistComponent implements OnInit {
     });
   }
 
+  upvote(id, author) {
+    this.postService
+      .upvote(id, author)
+      .subscribe(res => console.log('UPVOTE RESPONSE', res), err => console.log(err));
+  }
+
   nextCheck() {
     if (this.posts.length + this.skip === this.total) {
       this.nextDisabled = true;

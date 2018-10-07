@@ -5,11 +5,8 @@
 module.exports = function(options = {}) {
   return async context => {
     const { params } = context;
-    if (params.query.seenName) {
-      params.query = {
-        seenName: params.query.seenName,
-        $sort: { createdAt: "-1" }
-      };
+      context.params.query = {
+        $sort: { upvotes: "-1" }
     }
     return context;
   };

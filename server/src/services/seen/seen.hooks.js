@@ -3,12 +3,12 @@ const seenHook = require("../../hooks/seen-hook");
 const seenPopulate = require('../../hooks/seen-populate');
 module.exports = {
   before: {
-    all: [authenticate("jwt")],
+    all: [],
     find: [],
     get: [],
-    create: [seenHook()],
+    create: [authenticate("jwt"), seenHook()],
     update: [],
-    patch: [seenHook()],
+    patch: [authenticate("jwt"), seenHook()],
     remove: []
   },
 

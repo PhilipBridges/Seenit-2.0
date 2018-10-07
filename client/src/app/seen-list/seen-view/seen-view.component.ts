@@ -15,6 +15,7 @@ export class SeenViewComponent implements OnInit {
   total = 0;
   nextDisabled = false;
   prevDisabled = false;
+  upvotedPost = {};
   constructor(
     private postService: PostService,
     private route: ActivatedRoute
@@ -28,6 +29,23 @@ export class SeenViewComponent implements OnInit {
       this.prevCheck();
       this.nextCheck();
     });
+    this.postService.postCast.subscribe(async res => {
+      if (res.text) {
+        const postId = await JSON.parse(JSON.stringify(res._id));
+        const index = this.posts.findIndex(post => post._id === postId);
+        this.posts.splice(index, 1, res);
+      }
+      console.log(this.posts)
+    });
+  }
+
+  upvote(id, author) {
+    this.postService.upvote(id, author).subscribe(
+      async res => {
+        this.postService.upvotedPost(res);
+      },
+      err => console.log(err)
+    );
   }
 
   nextCheck() {

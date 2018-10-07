@@ -10,7 +10,7 @@ import PostInterface from "./post.interface";
 })
 export class PostViewComponent implements OnInit {
   postId = "";
-  post: PostInterface;
+  post: {};
   constructor(
     private route: ActivatedRoute,
     private postService: PostService
@@ -18,8 +18,11 @@ export class PostViewComponent implements OnInit {
 
   ngOnInit() {
     this.postId = this.route.snapshot.paramMap.get("id");
-    this.postService
-      .getSinglePost(this.postId)
-      .subscribe(res => (this.post = res), err => console.log(err));
+    this.postService.getSinglePost(this.postId).subscribe(
+      res => {
+        this.post = res;
+      },
+      err => console.log(err)
+    );
   }
 }
