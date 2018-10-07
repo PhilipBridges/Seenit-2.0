@@ -13,6 +13,7 @@ export class SeenListComponent implements OnInit {
   total = 0;
   nextDisabled = false;
   prevDisabled = false;
+  loading = true;
   constructor(private seenService: SeenService) {}
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class SeenListComponent implements OnInit {
       this.total = res.total;
       this.nextCheck();
       this.prevDisabled = true;
+      this.loading = false;
     });
   }
 
@@ -53,7 +55,7 @@ export class SeenListComponent implements OnInit {
   }
 
   prevPage() {
-    this.skip -= 5;
+    this.skip -= 10;
     this.seenService.getPrevPage(this.skip).subscribe(seens => {
       this.seens = [];
       this.seens.push(...seens.data);

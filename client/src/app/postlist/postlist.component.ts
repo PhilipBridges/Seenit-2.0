@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "../post.service";
+import { HttpResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-postlist",
@@ -27,7 +28,7 @@ export class PostlistComponent implements OnInit {
   upvote(id, author) {
     this.postService
       .upvote(id, author)
-      .subscribe(res => console.log('UPVOTE RESPONSE', res), err => console.log(err));
+      .subscribe(res => console.log(res), err => console.log(err));
   }
 
   nextCheck() {
@@ -59,7 +60,7 @@ export class PostlistComponent implements OnInit {
   }
 
   prevPage() {
-    this.skip -= 5;
+    this.skip -= 10;
     this.postService.getPrevPage(this.skip).subscribe(posts => {
       this.posts = [];
       this.posts.push(...posts.data);

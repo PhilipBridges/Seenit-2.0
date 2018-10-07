@@ -1,5 +1,7 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
 <div class="col-md-10 mx-auto">
   <div class="list-group-item flex-column align-items-start mx-auto">
+    <div *ngIf="!seens.length">Loading...</div>
     <div *ngFor="let seen of seens" id="seenLink" class="justify-content-between list-group-item-action" [routerLink]="['/seens', seen.name]">
       <div class="messageHeader">
         <h5 class="mb-1">{{seen.name}}</h5> <small>Created by {{seen.owner.name}} on {{seen.createdAt | date}}</small>

@@ -16,6 +16,7 @@ export class SeenViewComponent implements OnInit {
   nextDisabled = false;
   prevDisabled = false;
   upvotedPost = {};
+  loading = true;
   constructor(
     private postService: PostService,
     private route: ActivatedRoute
@@ -23,19 +24,25 @@ export class SeenViewComponent implements OnInit {
 
   ngOnInit() {
     this.seenName = this.route.snapshot.paramMap.get("name");
-    this.postService.getSeenPosts(this.seenName).subscribe(posts => {
-      this.posts.push(...posts.data);
-      this.total = posts.total;
-      this.prevCheck();
-      this.nextCheck();
-    });
-    this.postService.postCast.subscribe(async res => {
+    this.postService
+      .getSeenPosts(this.seenName)
+      .subscribe((posts: Array<object>) => {
+        // @ts-ignore
+        this.posts.push(...posts.data);
+        // @ts-ignore
+        this.total = posts.total;
+        this.nextCheck();
+        this.prevDisabled = true;
+        this.loading = false;
+      });
+    this.postService.postCast.subscribe(async (res: object) => {
+      // @ts-ignore
       if (res.text) {
+        // @ts-ignore
         const postId = await JSON.parse(JSON.stringify(res._id));
         const index = this.posts.findIndex(post => post._id === postId);
         this.posts.splice(index, 1, res);
       }
-      console.log(this.posts)
     });
   }
 
@@ -77,7 +84,7 @@ export class SeenViewComponent implements OnInit {
   }
 
   prevPage() {
-    this.skip -= 5;
+    this.skip -= 10;
     this.postService.getPrevPage(this.skip).subscribe(posts => {
       this.posts = [];
       this.posts.push(...posts.data);

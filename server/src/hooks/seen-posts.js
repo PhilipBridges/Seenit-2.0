@@ -5,9 +5,10 @@
 module.exports = function(options = {}) {
   return async context => {
     const { params } = context;
-      context.params.query = {
-        $sort: { upvotes: "-1" }
-    }
+    context.params.query = {
+      $sort: { upvotes: "-1" },
+      $skip: params.query.skip !== 0 ? params.query.skip : 0
+    };
     return context;
   };
 };

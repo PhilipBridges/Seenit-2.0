@@ -26,6 +26,7 @@ export class PostFormComponent implements OnInit {
 
   post() {
     this.postService.createPost(this.postData).subscribe(res => {
+      // @ts-ignore
       this.router.navigate(["/posts", res._id]);
     });
   }

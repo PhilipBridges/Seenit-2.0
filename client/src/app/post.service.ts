@@ -40,7 +40,6 @@ export class PostService {
   }
 
   upvote(id, author) {
-    console.log("PASSED AUTHOR", author);
     return this.http.patch<any>(`${this.postUrl}/${id}`, {
       vote: true,
       author: {

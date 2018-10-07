@@ -15,11 +15,12 @@ import { MessagesComponent } from "./messages/messages.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { PostlistComponent } from "./postlist/postlist.component";
 import { PostFormComponent } from "./postlist/post-form/post.form.component";
-import { PostViewComponent } from './post-view/post-view.component';
-import { CommentlistComponent } from './commentlist/commentlist.component';
-import { SeenListComponent } from './seen-list/seen-list.component';
-import { SeenFormComponent } from './seen-list/seen-form/seen-form.component';
-import { SeenViewComponent } from './seen-list/seen-view/seen-view.component';
+import { PostViewComponent } from "./post-view/post-view.component";
+import { CommentlistComponent } from "./commentlist/commentlist.component";
+import { SeenListComponent } from "./seen-list/seen-list.component";
+import { SeenFormComponent } from "./seen-list/seen-form/seen-form.component";
+import { SeenViewComponent } from "./seen-list/seen-view/seen-view.component";
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,14 @@ import { SeenViewComponent } from './seen-list/seen-view/seen-view.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.rectangleBounce,
+      backdropBackgroundColour: "rgba(0,0,0,0.0)",
+      backdropBorderRadius: "40px",
+      primaryColour: "#3f51b5",
+      secondaryColour: "#ffffff",
+      tertiaryColour: "#ffffff"
+    }),
     MDBBootstrapModule.forRoot()
   ],
   providers: [

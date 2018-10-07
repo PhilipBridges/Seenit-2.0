@@ -14,6 +14,7 @@ export class MessagesComponent implements OnInit {
   };
   confirm = false;
   $selectedUser = "";
+  loading = true;
   // Pagination stuff
   touched = false;
   skip = 0;
@@ -31,6 +32,7 @@ export class MessagesComponent implements OnInit {
       this.total = messages.total;
       this.nextCheck();
       this.prevDisabled = true;
+      this.loading = false;
     });
   }
 
