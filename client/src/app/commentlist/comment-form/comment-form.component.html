@@ -1,0 +1,29 @@
+<button type="button" size="sm" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+  mdbWavesEffect>
+  <mdb-icon icon="magic" class="white-text pr-1" aria-hidden="true"></mdb-icon> New Comment
+</button>
+<form>
+  <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">New comment</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <textarea [validateSuccess]="false" data-error="required" type="text" id="orangeForm-text" class="form-control validate"
+              [formControl]="commentText" mdbInputDirective></textarea>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button (click)="createComment()" (click)="frame.hide()" mdbBtn color="deep-orange" class="waves-light" mdbWavesEffect>Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
