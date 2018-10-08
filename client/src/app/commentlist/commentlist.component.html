@@ -1,3 +1,17 @@
-<p class="pt-4">
-  commentlist works!
-</p>
+<div class="pt-1">
+  <app-comment-form></app-comment-form>
+</div>
+<div class="pt-4">
+  <ul class="list-group">
+    <li *ngFor="let comment of comments" class="media-body list-group-item pl-2">
+      <span id="commentAuthorBlock" class="pl-2">
+        {{comment.author.name}} @ {{comment.createdAt | date}}
+      </span>
+      <span id="voteBox" class="pr-1 float-left">
+        <mdb-icon icon="sort-up" id="voteArrow" class="indigo-text" aria-hidden="true">
+        </mdb-icon>{{comment.upvotes}}
+      </span>
+      <p class="pt-1 pl-4">{{comment.text}}</p>
+    </li>
+  </ul>
+</div>

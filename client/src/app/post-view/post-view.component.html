@@ -1,4 +1,5 @@
-<div class="col-md-10 mx-auto" *ngIf="post.text">
+<div class="col-md-10 mx-auto" *ngIf="post">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
   <mdb-card>
     <mdb-card-body>
       <mdb-card-title>{{post.title}} by @ {{post.createdAt | date: 'medium'}}</mdb-card-title>

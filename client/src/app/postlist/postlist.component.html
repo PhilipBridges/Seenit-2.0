@@ -29,7 +29,7 @@
   <!-- Table body -->
   <tbody>
     <tr *ngFor="let post of posts" id="post">
-      <th scope="row" id="voteArrow" (click)="upvote(post._id, post.author)" [ngClass]="{'text-red': voted}">
+      <th scope="row" id="voteArrow" (click)="upvote(post._id, post.author)">
         <span>
           <mdb-icon icon="sort-up" class="indigo-text d-block" aria-hidden="true">
           </mdb-icon>

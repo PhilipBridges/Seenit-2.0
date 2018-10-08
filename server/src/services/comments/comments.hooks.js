@@ -1,20 +1,24 @@
 const { authenticate } = require("@feathersjs/authentication").hooks;
 const commentHook = require("../../hooks/comments-hook");
 
+const commentFind = require('../../hooks/comment-find');
+
+const commentPopulate = require('../../hooks/comment-populate');
+
 module.exports = {
   before: {
-    all: [authenticate("jwt")],
-    find: [],
+    all: [],
+    find: [commentFind()],
     get: [],
-    create: [commentHook()],
-    update: [commentHook()],
+    create: [authenticate("jwt"), commentHook()],
+    update: [authenticate("jwt"), commentHook()],
     patch: [],
     remove: []
   },
 
   after: {
     all: [],
-    find: [],
+    find: [commentPopulate()],
     get: [],
     create: [],
     update: [],

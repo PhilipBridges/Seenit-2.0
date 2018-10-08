@@ -14,6 +14,7 @@ export class PostlistComponent implements OnInit {
   total = 0;
   nextDisabled = false;
   prevDisabled = false;
+  loading = true;
   constructor(private postService: PostService) {}
 
   ngOnInit() {
@@ -22,6 +23,7 @@ export class PostlistComponent implements OnInit {
       this.total = posts.total;
       this.prevCheck();
       this.nextCheck();
+      this.loading = false;
     });
   }
 

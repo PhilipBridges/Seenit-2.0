@@ -11,6 +11,7 @@ import PostInterface from "./post.interface";
 export class PostViewComponent implements OnInit {
   postId = "";
   post: {};
+  loading = true;
   constructor(
     private route: ActivatedRoute,
     private postService: PostService
@@ -21,8 +22,12 @@ export class PostViewComponent implements OnInit {
     this.postService.getSinglePost(this.postId).subscribe(
       res => {
         this.post = res;
+        this.loading = false;
       },
-      err => console.log(err)
+      err => {
+        this.loading = false;
+        console.log(err);
+      }
     );
   }
 }

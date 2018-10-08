@@ -21,6 +21,7 @@ import { SeenListComponent } from "./seen-list/seen-list.component";
 import { SeenFormComponent } from "./seen-list/seen-form/seen-form.component";
 import { SeenViewComponent } from "./seen-list/seen-view/seen-view.component";
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
+import { CommentFormComponent } from './commentlist/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from "ngx-loading";
     CommentlistComponent,
     SeenListComponent,
     SeenFormComponent,
-    SeenViewComponent
+    SeenViewComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,
