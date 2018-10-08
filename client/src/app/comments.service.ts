@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "./../environments/environment";
-import { Subject, throwError, BehaviorSubject } from "rxjs";
+import { throwError, BehaviorSubject } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 @Injectable({
@@ -39,9 +39,7 @@ export class CommentsService {
   upvote(id, author) {
     return this.http.patch<any>(`${this.commentUrl}/${id}`, {
       vote: true,
-      author: {
-        ...author
-      }
+      author
     });
   }
 

@@ -1,9 +1,13 @@
 const { authenticate } = require("@feathersjs/authentication").hooks;
 const commentHook = require("../../hooks/comments-hook");
 
-const commentFind = require('../../hooks/comment-find');
+const commentFind = require("../../hooks/comment-find");
 
-const commentPopulate = require('../../hooks/comment-populate');
+const commentPopulate = require("../../hooks/comment-populate");
+
+const commentUpvote = require("../../hooks/comment-upvote");
+
+const commentVotePopulate = require('../../hooks/comment-vote-populate');
 
 module.exports = {
   before: {
@@ -12,7 +16,7 @@ module.exports = {
     get: [],
     create: [authenticate("jwt"), commentHook()],
     update: [authenticate("jwt"), commentHook()],
-    patch: [],
+    patch: [authenticate("jwt"), commentUpvote()],
     remove: []
   },
 
@@ -22,7 +26,7 @@ module.exports = {
     get: [],
     create: [],
     update: [],
-    patch: [],
+    patch: [commentVotePopulate()],
     remove: []
   },
 

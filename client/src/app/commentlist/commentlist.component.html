@@ -5,9 +5,9 @@
   <ul class="list-group">
     <li *ngFor="let comment of comments" class="media-body list-group-item pl-2">
       <span id="commentAuthorBlock" class="pl-2">
-        {{comment.author.name}} @ {{comment.createdAt | date}}
+        {{comment.author.name}} @ {{comment.createdAt | date: 'medium'}}
       </span>
-      <span id="voteBox" class="pr-1 float-left">
+      <span id="voteBox" class="pr-1 float-left" (click)="upvote(comment._id, comment.author)">
         <mdb-icon icon="sort-up" id="voteArrow" class="indigo-text" aria-hidden="true">
         </mdb-icon>{{comment.upvotes}}
       </span>
