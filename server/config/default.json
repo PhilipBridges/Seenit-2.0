@@ -27,5 +27,5 @@
       "passwordField": "password"
     }
   },
-  "mongodb": "mongodb://admin:skele1@ds121163.mlab.com:21163/seenit"
+  "mongodb": "mongodb://<name>:<password>.mlab.com:21163/seenit"
 }
