@@ -1,5 +1,5 @@
 <!-- Table  -->
-<div class="d-flex-column float-right mr-4 justify-self-center">
+<div *ngIf="authed" class="d-flex-column float-right mr-4 justify-self-center">
   <app-seen-form></app-seen-form>
 </div>
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>

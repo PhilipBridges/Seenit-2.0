@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { PostService } from "../post.service";
-import { HttpResponse } from "@angular/common/http";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: "app-postlist",
@@ -15,7 +15,8 @@ export class PostlistComponent implements OnInit {
   nextDisabled = false;
   prevDisabled = false;
   loading = true;
-  constructor(private postService: PostService) {}
+  authed = false;
+  constructor(private postService: PostService, private auth: AuthService) {}
 
   ngOnInit() {
     this.postService.getPosts().subscribe(posts => {
@@ -25,6 +26,7 @@ export class PostlistComponent implements OnInit {
       this.nextCheck();
       this.loading = false;
     });
+    this.auth.authCast.subscribe((res: boolean) => (this.authed = res));
   }
 
   upvote(id, author) {
