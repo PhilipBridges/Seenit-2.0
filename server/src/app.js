@@ -18,7 +18,7 @@ const authentication = require("./authentication");
 const mongoose = require("./mongoose");
 const customConfig = require("../config/production");
 
-const mongodb = require('./mongodb');
+const mongodb = require("./mongodb");
 
 const app = express(feathers());
 

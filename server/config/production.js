@@ -1,7 +1,7 @@
 
 module.exports = {
   host: "localhost",
-  port: process.env.PORT,
+  port: 3030,
   public: "../public/",
   paginate: {
     default: 10,
