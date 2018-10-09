@@ -18,9 +18,15 @@ export class AppComponent implements OnInit {
 
     const jwt = localStorage.getItem("token");
     if (jwt) {
-      const userData = decode(jwt).user;
-      this.authService.authCheck(true);
-      this.authService.userOb(userData);
+      const decodedJwt = decode(jwt);
+      if (Date.now() / 1000 > decodedJwt.exp) {
+        localStorage.removeItem("token");
+        this.authService.authCheck(false);
+        this.authService.userOb({});
+      } else {
+        this.authService.authCheck(true);
+        this.authService.userOb(decodedJwt.user);
+      }
     }
   }
 }
