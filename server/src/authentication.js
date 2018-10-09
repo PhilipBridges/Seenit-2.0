@@ -27,7 +27,6 @@ module.exports = function(app) {
               email: context.params.user.name
             }
           });
-          console.log(context.params);
         }
       ],
       remove: [authentication.hooks.authenticate("jwt")]
