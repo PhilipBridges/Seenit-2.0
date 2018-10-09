@@ -1,9 +1,5 @@
-# MEAN-starter
-1. Change the env variables in server/config for development and production.
-2. Change the environment configs in client/src/environments for client variables.
-3. Run 'ng serve' in client directory.
-4. Run 'npm run dev' in server directory.
+# Seenit 2.0
 
-Has MD Bootstrap for the style. It has basic register/login routes with an updating navbar after logging in. Also comes with basic paginated messaging.
+A remake of an old site I made.
 
-The backend uses a Mongo database, Feathers for the API and Feathers-Mongoose as an ORM.
+A Reddit-like site built off my own MEAN boilerplate. Uses MDBootstrap for styling.
